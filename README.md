@@ -1,2 +1,3 @@
-# despodkd-themes-chrome-extension
-Webpage Css injection - Chrome Extension 
+# KD Themes - Browser Extensions
+
+Webpage CSS injection

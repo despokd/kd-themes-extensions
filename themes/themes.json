@@ -1,0 +1,44 @@
+{
+    "themes": [
+        {
+            "key": "easyRedmine11Comfort",
+            "name": "easyRedmine 11 Comfort",
+            "files": [
+                "easyRedmine11/comfort.css"
+            ],
+            "urls": [
+                "http*://*pm.webneo.de/*"
+            ]
+        },
+        {
+            "key": "easyRedmine11Contrast",
+            "name": "easyRedmine 11 Contrast",
+            "files": [
+                "easyRedmine11/contrast.css"
+            ],
+            "urls": [
+                "http*://*pm.webneo.de/*"
+            ]
+        },
+        {
+            "key": "easyRedmine11Compact",
+            "name": "easyRedmine 11 Compact",
+            "files": [
+                "easyRedmine11/compact.css"
+            ],
+            "urls": [
+                "http*://*pm.webneo.de/*"
+            ]
+        },
+        {
+            "key": "GoogleBg",
+            "name": "Google BG",
+            "files": [
+                "google/bg.css"
+            ],
+            "urls": [
+                "http*://*google.*"
+            ]
+        }
+    ]
+}
