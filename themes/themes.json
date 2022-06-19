@@ -1,10 +1,10 @@
 {
     "themes": [
         {
-            "key": "easyRedmine11Comfort",
-            "name": "easyRedmine 11 Comfort",
+            "key": "easyRedmine11Default",
+            "name": "easyRedmine 11 Dark",
             "files": [
-                "easyRedmine11/comfort.css"
+                "https://pm.webneo.de/assets/easy_themes/easy_theme_design_1-1655278754-theme.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*"
@@ -14,7 +14,7 @@
             "key": "easyRedmine11Contrast",
             "name": "easyRedmine 11 Contrast",
             "files": [
-                "easyRedmine11/contrast.css"
+                "https://pm.webneo.de/assets/easy_themes/easy_theme_design_3-1631675772-theme.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*"
@@ -24,7 +24,7 @@
             "key": "easyRedmine11Compact",
             "name": "easyRedmine 11 Compact",
             "files": [
-                "easyRedmine11/compact.css"
+                "https://pm.webneo.de/assets/easy_themes/easy_theme_design_2-1655278754-theme.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*"
