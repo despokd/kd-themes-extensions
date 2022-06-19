@@ -28,14 +28,16 @@ chrome.runtime.onMessage.addListener((request) => {
 function checkThemes() {
     console.log('checkThemes');
     chrome.storage.sync.get(["activeThemes"], (result) => {
-        console.log('activeThemes', result);
         if (result.activeThemes) {
+            // remove duplicates
+            result.activeThemes = result.activeThemes.filter((item, index) => result.activeThemes.indexOf(item) === index);
+
+            // activate themes
             result.activeThemes.forEach((theme) => {
                 activateTheme(theme);
             });
+            console.log('activeThemes', result.activeThemes);
         }
-    }).catch(error => {
-        console.error(error);
     });
 }
 
@@ -60,14 +62,16 @@ function activateTheme(theme) {
                                 // add stylesheets
                                 availableTheme.files.forEach((file) => {
                                     console.log(`Injecting stylesheet for ${url}`);
-                                    const link = document.createElement("link");
-                                    link.id = `KD${theme}`;
-                                    link.rel = 'stylesheet';
-                                    link.type = 'text/css';
-                                    link.media = 'all';
-                                    link.href = file + '?v=' + Date.now();
-                                    document.head.appendChild(link);
-                                    console.log('link', link);
+                                    // get content of file
+                                    fetch(file)
+                                        .then(res => res.text())
+                                        .then(out => {
+                                            // add stylesheet
+                                            let style = document.createElement('style');
+                                            style.id = `KD${theme}`;
+                                            style.innerHTML = out;
+                                            document.body.appendChild(style);
+                                        });
                                 });
                             }
                         });
@@ -75,7 +79,9 @@ function activateTheme(theme) {
                         // add theme to active themes in storage
                         chrome.storage.sync.get("activeThemes", (result) => {
                             if (result.activeThemes) {
-                                result.activeThemes.push(theme);
+                                if (result.activeThemes.indexOf(theme) === -1) {
+                                    result.activeThemes.push(theme);
+                                }
                             } else {
                                 result.activeThemes = [theme];
                             }
@@ -102,12 +108,10 @@ function deactivateTheme(theme) {
     // remove theme from active themes in storage
     chrome.storage.sync.get(["activeThemes"], (result) => {
         if (result.activeThemes) {
-            const index = result.activeThemes.indexOf(theme);
-            if (index > -1) {
-                result.activeThemes.splice(index, 1);
-            }
-            console.log('activeThemes', result.activeThemes);
-            chrome.storage.sync.set({ activeThemes: result.activeThemes }, () => { });
+            // delete all entries of theme
+            let activeThemes = result.activeThemes.filter((item) => item !== theme);
+            console.log('activeThemes', activeThemes);
+            chrome.storage.sync.set({ activeThemes }, () => { });;
         }
     });
 }
