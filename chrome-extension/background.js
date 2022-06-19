@@ -1,5 +1,4 @@
 chrome.webNavigation.onCompleted.addListener(function (details) {
-  console.log('onCompleted', details);
   getThemes();
 });
 
@@ -45,6 +44,20 @@ function insertContentScript() {
       } catch (error) {
         console.error(error);
       }
+    }
+  });
+}
+
+function checkThemes() {
+  // send message to content script
+
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    try {
+      chrome.tabs.sendMessage(tabs[0].id, {
+        cmd: "checkThemes"
+      });
+    } catch (error) {
+      console.error('toggl', error);
     }
   });
 }

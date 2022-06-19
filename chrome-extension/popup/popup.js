@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   createToggles();
+  console.log(new Date().toLocaleTimeString());
+});
+
+window.addEventListener("load", () => {
+  bindToggles();
+  console.log(new Date().toLocaleTimeString());
 });
 
 /**
@@ -71,33 +77,19 @@ function createToggles() {
 function bindToggles() {
   const themeToggles = document.querySelectorAll(".toggle-theme");
 
-  console.log('themeToggles', themeToggles);
 
   themeToggles.forEach((toggle) => {
-    console.log('toggle', toggle);
-
-    /*
-    // check if theme is in active themes
-    chrome.storage.get(["activeThemes"], (result) => {
-      if (result.activeThemes) {
-        if (result.activeThemes.includes(toggle.value)) {
-          toggle.checked = true;
-        }
-      }
-    }).catch(error => {
-      console.error(error);
-    }).finally(() => {
-      toggle.addEventListener("change", () => {
-        // toggle theme state
-        toggleTheme(toggle.value, toggle.checked);
-      });
+    // bind toggle to theme
+    toggle.addEventListener("change", () => {
+      toggleTheme(toggle.value, toggle.checked);
     });
-    */
 
-    // add event listeners
-    toggle.addEventListener("click", (event) => {
-      console.log('toggle clicked', toggle, event.target.checked);
-      toggleTheme(event.target.value, (event.target.checked) ? true : false);
+    // check if theme is in active themes
+    chrome.storage.sync.get(["activeThemes"], (result) => {
+      console.log('activeThemes', result, toggle.checked, result.activeThemes.includes(toggle.value));
+      if (result.activeThemes.includes(toggle.value)) {
+        toggle.checked = true;
+      }
     });
   });
 }

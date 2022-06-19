@@ -1,3 +1,7 @@
+//window.onloadstart = () => {
+checkThemes();
+
+
 /**
  * React to commands from content/popup script
  */
@@ -10,10 +14,30 @@ chrome.runtime.onMessage.addListener((request) => {
         case "deactivateTheme":
             deactivateTheme(request.theme);
             break;
+        case "checkThemes":
+            checkThemes();
+            break;
         default:
             console.log(`Unknown command: ${request.cmd}`);
     }
 });
+
+/**
+ * Check active themes on page load and add stylesheet
+ */
+function checkThemes() {
+    console.log('checkThemes');
+    chrome.storage.sync.get(["activeThemes"], (result) => {
+        console.log('activeThemes', result);
+        if (result.activeThemes) {
+            result.activeThemes.forEach((theme) => {
+                activateTheme(theme);
+            });
+        }
+    }).catch(error => {
+        console.error(error);
+    });
+}
 
 /**
  * Inject stylesheet
@@ -24,16 +48,17 @@ function activateTheme(theme) {
     chrome.storage.sync.get(["themes"], (result) => {
         if (result.themes) {
             try {
-                result.themes.forEach((savedTheme) => {
-                    console.log(`Saved theme: ${savedTheme.key}`);
+                result.themes.forEach((availableTheme) => {
+                    console.log(`Available theme: ${availableTheme.key}`);
 
-                    if (savedTheme.key === theme) {
+                    if (availableTheme.key === theme) {
                         // check if theme is for current page
-                        savedTheme.urls.forEach((url) => {
+                        availableTheme.urls.forEach((url) => {
+                            console.log(`Checking ${url}`, window.location.href.match(url));
 
-                            if (window.location.href.match(url).length > 0) {
+                            if (window.location.href.match(url).length > 0 && !document.getElementById(`KD${theme}`)) {
                                 // add stylesheets
-                                savedTheme.files.forEach((file) => {
+                                availableTheme.files.forEach((file) => {
                                     console.log(`Injecting stylesheet for ${url}`);
                                     const link = document.createElement("link");
                                     link.id = `KD${theme}`;
@@ -48,15 +73,13 @@ function activateTheme(theme) {
                         });
 
                         // add theme to active themes in storage
-                        chrome.storage.get(["activeThemes"], (result) => {
+                        chrome.storage.sync.get("activeThemes", (result) => {
                             if (result.activeThemes) {
                                 result.activeThemes.push(theme);
                             } else {
                                 result.activeThemes = [theme];
                             }
-                            chrome.storage.set({ activeThemes: result.activeThemes }, () => { });
-                        }).catch(error => {
-                            console.error(error);
+                            chrome.storage.sync.set({ activeThemes: result.activeThemes }, () => { });
                         });
                     }
                 });
@@ -77,15 +100,14 @@ function deactivateTheme(theme) {
     }
 
     // remove theme from active themes in storage
-    chrome.storage.get(["activeThemes"], (result) => {
+    chrome.storage.sync.get(["activeThemes"], (result) => {
         if (result.activeThemes) {
             const index = result.activeThemes.indexOf(theme);
             if (index > -1) {
                 result.activeThemes.splice(index, 1);
             }
-            chrome.storage.set({ activeThemes: result.activeThemes }, () => { });
+            console.log('activeThemes', result.activeThemes);
+            chrome.storage.sync.set({ activeThemes: result.activeThemes }, () => { });
         }
-    }).catch(error => {
-        console.error(error);
     });
 }
