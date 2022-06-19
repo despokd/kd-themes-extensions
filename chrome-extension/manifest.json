@@ -32,8 +32,5 @@
     "declarativeContent",
     "storage",
     "webNavigation"
-  ],
-  "host_permissions": [
-    "https://pm.webneo.de/*"
   ]
 }
