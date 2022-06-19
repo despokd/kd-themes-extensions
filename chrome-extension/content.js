@@ -60,19 +60,19 @@ function activateTheme(theme) {
 
                             if (window.location.href.match(url).length > 0 && !document.getElementById(`KD${theme}`)) {
                                 // add stylesheets
+                                let style = document.createElement('style');
+                                style.id = `KD${theme}`;
                                 availableTheme.files.forEach((file) => {
                                     console.log(`Injecting stylesheet for ${url}`);
                                     // get content of file
                                     fetch(file)
                                         .then(res => res.text())
                                         .then(out => {
-                                            // add stylesheet
-                                            let style = document.createElement('style');
-                                            style.id = `KD${theme}`;
+                                            // add css
                                             style.innerHTML = out;
-                                            document.body.appendChild(style);
                                         });
                                 });
+                                document.body.appendChild(style);
                             }
                         });
 
