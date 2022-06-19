@@ -7,7 +7,7 @@
                 "easyRedmine11/comfort.css"
             ],
             "urls": [
-                "http*://*pm.webneo.de/*"
+                "https://pm.webneo.de/*"
             ]
         },
         {
@@ -17,7 +17,7 @@
                 "easyRedmine11/contrast.css"
             ],
             "urls": [
-                "http*://*pm.webneo.de/*"
+                "https://pm.webneo.de/*"
             ]
         },
         {
@@ -27,7 +27,7 @@
                 "easyRedmine11/compact.css"
             ],
             "urls": [
-                "http*://*pm.webneo.de/*"
+                "https://pm.webneo.de/*"
             ]
         },
         {
@@ -37,7 +37,8 @@
                 "google/bg.css"
             ],
             "urls": [
-                "http*://*google.*"
+                "https://www.google.com/*",
+                "https://www.google.de/*"
             ]
         }
     ]
