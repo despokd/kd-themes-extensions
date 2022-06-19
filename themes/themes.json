@@ -4,7 +4,8 @@
             "key": "easyRedmine11Dark",
             "name": "easyRedmine 11 Dark",
             "files": [
-                "https://pm.webneo.de/assets/easy_themes/easy_theme_design_1-1655278754-theme.css"
+                "https://pm.webneo.de/assets/easy_themes/easy_theme_design_1-1655278754-theme.css",
+                "https://raw.githubusercontent.com/despokd/kd-themes-extensions/main/themes/easyRedmine11/dark.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*"
@@ -28,17 +29,6 @@
             ],
             "urls": [
                 "https://pm.webneo.de/*"
-            ]
-        },
-        {
-            "key": "GoogleBg",
-            "name": "Google BG",
-            "files": [
-                "https://raw.githubusercontent.com/despokd/kd-themes-extensions/main/themes/google/bg.css"
-            ],
-            "urls": [
-                "https://www.google.com/*",
-                "https://www.google.de/*"
             ]
         }
     ]
