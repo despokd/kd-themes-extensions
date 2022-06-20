@@ -69,7 +69,7 @@ function activateTheme(theme) {
                                         .then(res => res.text())
                                         .then(out => {
                                             // add css
-                                            style.innerHTML = out;
+                                            style.innerHTML += out;
                                         });
                                 });
                                 document.body.appendChild(style);
