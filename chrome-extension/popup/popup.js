@@ -1,11 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   createToggles();
-  console.log(new Date().toLocaleTimeString());
 });
 
 window.addEventListener("load", () => {
   bindToggles();
-  console.log(new Date().toLocaleTimeString());
 });
 
 /**
@@ -86,7 +84,6 @@ function bindToggles() {
 
     // check if theme is in active themes
     chrome.storage.sync.get(["activeThemes"], (result) => {
-      console.log('activeThemes', result, toggle.checked, result.activeThemes.includes(toggle.value));
       if (result.activeThemes.includes(toggle.value)) {
         toggle.checked = true;
       }

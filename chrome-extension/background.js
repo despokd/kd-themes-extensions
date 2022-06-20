@@ -31,7 +31,6 @@ function insertContentScript() {
         result.themes.forEach((theme) => {
           theme.urls.forEach((url) => {
             chrome.tabs.query({ url }, (tabs) => {
-              console.log(`Injecting content script to ${url}`);
               if (tabs.length > 0) {
                 console.log(`Injecting content script to ${url}`);
                 chrome.tabs.executeScript(tabs[0].id, {
