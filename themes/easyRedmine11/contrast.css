@@ -1,3 +1,19 @@
-* {
-    color: green !important;
+body::after {
+  content: "";
+  width: 100%;
+  height: 8px;
+  position: fixed;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    #bb0d27 32%,
+    transparent 32%,
+    transparent 32.5%,
+    #f39200 32.5%,
+    #f39200 66%,
+    transparent 66%,
+    transparent 66.5%,
+    #80a51b 66.5%
+  );
+  z-index: 1000;
 }
