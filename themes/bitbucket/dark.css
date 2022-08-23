@@ -1,0 +1,30 @@
+:root {
+    --color-bg: #172B4D;
+    --color-text: #fff;
+
+    --color-header-bg: #6B778C;
+    --color-header-text: var(--color-text);
+    --ds-surface: var(var(--color-header-bg));
+    --ds-text-subtlest: var(var(--color-header-text));
+
+    --color-a: rgba(108 155 235, 1);
+    --color-a-hover: rgba(108 155 235, .5);
+}
+
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    background-color: var(--color-bg, #333);
+    color: var(--color-text, #fff);
+}
+
+a {
+    color: var(--color-a, #fff);
+}
+
+a:hover {
+    color: var(--color-a-hover, #fff);
+}
