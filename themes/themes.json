@@ -8,7 +8,8 @@
                 "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/easyRedmine11/dark.css"
             ],
             "urls": [
-                "https://pm.webneo.de/*"
+                "https://pm.webneo.de/*",
+                "https://www.pm.webneo.de/*"
             ]
         },
         {
