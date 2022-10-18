@@ -1,5 +1,9 @@
-chrome.webNavigation.onCompleted.addListener(function (details) {
+/**
+ * Get themes when extension is installed and every 24 hours
+ */
+chrome.runtime.onInstalled.addListener(() => {
   getThemes();
+  setInterval(getThemes, 86400000);
 });
 
 /**
