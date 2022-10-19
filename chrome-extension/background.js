@@ -28,32 +28,22 @@ function getThemes() {
 }
 
 function insertContentScript() {
-  // apply content script to all themes sites
-  chrome.storage.sync.get(["themes"], (result) => {
-    if (result.themes) {
-      try {
-        result.themes.forEach((theme) => {
-          theme.urls.forEach((url) => {
-            chrome.tabs.query({ url }, (tabs) => {
-              if (tabs.length > 0) {
-                console.log(`Injecting content script to ${url}`);
-                chrome.tabs.executeScript(tabs[0].id, {
-                  file: "content.js"
-                });
-              }
-            });
-          });
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
+  // apply content script to all tabs
+  chrome.tabs.query({}, (tabs) => {
+    tabs.forEach((tab) => {
+      if (!tab.url) return;
+      if (!tab.url.match('http://') && !tab.url.match('https://')) return;
+
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['content.js']
+      });
+    });
   });
 }
 
 function checkThemes() {
   // send message to content script
-
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     try {
       chrome.tabs.sendMessage(tabs[0].id, {

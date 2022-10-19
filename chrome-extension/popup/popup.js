@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   createToggles();
+  bindToggles();
 });
 
 window.addEventListener("load", () => {
@@ -7,7 +8,7 @@ window.addEventListener("load", () => {
 });
 
 /**
- * Activate/Deactivate theme based value
+ * Activate/Deactivate theme based value at content.js
  * 
  * @param {*} theme 
  * @param {*} activate 
@@ -15,14 +16,7 @@ window.addEventListener("load", () => {
 function toggleTheme(theme, activate = true) {
   console.log('toggleTheme', theme, activate);
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    try {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        cmd: activate ? "activateTheme" : "deactivateTheme",
-        theme
-      });
-    } catch (error) {
-      console.error('toggl', error);
-    }
+    chrome.tabs.sendMessage(tabs[0].id, { cmd: activate ? "activateTheme" : "deactivateTheme", theme: theme });
   });
 }
 
@@ -84,8 +78,8 @@ function bindToggles() {
 
     // check if theme is in active themes
     chrome.storage.sync.get(["activeThemes"], (result) => {
-      if (result.activeThemes.includes(toggle.value)) {
-        toggle.checked = true;
+      if (result.activeThemes) {
+        toggle.checked = result.activeThemes.includes(toggle.value);
       }
     });
   });

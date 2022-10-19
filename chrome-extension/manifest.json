@@ -20,10 +20,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://pm.webneo.de/*",
-        "https://www.pm.webneo.de/*",
-        "https://www.vacationizr.com/*",
-        "https://bitbucket.org/*"
+        "<all_urls>"
       ],
       "all_frames": true,
       "js": [
@@ -34,6 +31,10 @@
   ],
   "permissions": [
     "storage",
-    "webNavigation"
+    "webNavigation",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*/*"
   ]
 }

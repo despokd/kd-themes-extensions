@@ -6,6 +6,8 @@ checkThemes();
  * React to commands from content/popup script
  */
 chrome.runtime.onMessage.addListener((request) => {
+    console.log('onMessage', request);
+
     switch (request.cmd) {
         case "activateTheme":
             activateTheme(request.theme);
@@ -17,7 +19,7 @@ chrome.runtime.onMessage.addListener((request) => {
             checkThemes();
             break;
         default:
-            console.log(`Unknown command: ${request.cmd}`);
+            console.debug(`Unknown command`);
     }
 });
 
