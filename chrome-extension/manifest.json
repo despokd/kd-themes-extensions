@@ -20,7 +20,10 @@
   "content_scripts": [
     {
       "matches": [
-        "https://pm.webneo.de/*"
+        "https://pm.webneo.de/*",
+        "https://www.pm.webneo.de/*",
+        "https://www.vacationizr.com/*",
+        "https://bitbucket.org/*"
       ],
       "all_frames": true,
       "js": [

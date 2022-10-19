@@ -20,7 +20,8 @@
                 "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/easyRedmine11/contrast.css"
             ],
             "urls": [
-                "https://pm.webneo.de/*"
+                "https://pm.webneo.de/*",
+                "https://www.pm.webneo.de/*"
             ]
         },
         {
@@ -31,7 +32,8 @@
                 "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/easyRedmine11/compact.css"
             ],
             "urls": [
-                "https://pm.webneo.de/*"
+                "https://pm.webneo.de/*",
+                "https://www.pm.webneo.de/*"
             ]
         },
         {
