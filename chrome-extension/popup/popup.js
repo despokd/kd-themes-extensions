@@ -32,7 +32,7 @@ function createToggles() {
         // append elements
         wrapper.appendChild(toggle);
         wrapper.appendChild(label);
-        document.querySelector(".themes").appendChild(wrapper);
+        document.querySelector("[data-themes]").appendChild(wrapper);
       });
 
       // bind toggles
