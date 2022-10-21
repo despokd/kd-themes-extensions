@@ -68,3 +68,7 @@ body {
   min-width: 16rem;
   padding: 0.5rem;
 }
+
+body .container {
+  padding-block: 10px;
+}
