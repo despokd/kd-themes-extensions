@@ -31,7 +31,6 @@
   ],
   "permissions": [
     "storage",
-    "webNavigation",
     "scripting"
   ],
   "host_permissions": [
