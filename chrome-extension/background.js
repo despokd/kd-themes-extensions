@@ -45,12 +45,8 @@ function insertContentScript() {
 function checkThemes() {
   // send message to content script
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    try {
-      chrome.tabs.sendMessage(tabs[0].id, {
-        cmd: "checkThemes"
-      });
-    } catch (error) {
-      console.error('toggl', error);
-    }
+    Object.keys(tabs).forEach((key) => {
+      chrome.tabs.sendMessage(tabs[key].id, { cmd: "checkThemes" });
+    });
   });
 }
