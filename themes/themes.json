@@ -10,7 +10,8 @@
             "urls": [
                 "https://pm.webneo.de/*",
                 "https://www.pm.webneo.de/*"
-            ]
+            ],
+            "css": ""
         },
         {
             "key": "easyRedmine11Contrast",
@@ -22,7 +23,8 @@
             "urls": [
                 "https://pm.webneo.de/*",
                 "https://www.pm.webneo.de/*"
-            ]
+            ],
+            "css": ""
         },
         {
             "key": "easyRedmine11Compact",
@@ -34,7 +36,8 @@
             "urls": [
                 "https://pm.webneo.de/*",
                 "https://www.pm.webneo.de/*"
-            ]
+            ],
+            "css": ""
         },
         {
             "key": "vacationizrWbn",
@@ -44,7 +47,8 @@
             ],
             "urls": [
                 "https://www.vacationizr.com/*"
-            ]
+            ],
+            "css": ""
         },
         {
             "key": "bitbucketDark",
@@ -54,7 +58,8 @@
             ],
             "urls": [
                 "https://bitbucket.org/*"
-            ]
+            ],
+            "css": ""
         }
     ]
 }
