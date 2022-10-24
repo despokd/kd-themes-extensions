@@ -13,6 +13,7 @@ function createToggles() {
         // create wrapper
         const wrapper = document.createElement("div");
         wrapper.classList.add("form-check");
+        wrapper.classList.add("form-switch");
 
         // create toggle button
         const toggle = document.createElement("input");
