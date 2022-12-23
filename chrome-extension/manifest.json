@@ -15,7 +15,7 @@
     "default_title": "KD Themes"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "service_worker.js"
   },
   "content_scripts": [
     {
@@ -31,7 +31,8 @@
   ],
   "permissions": [
     "storage",
-    "scripting"
+    "scripting",
+    "webNavigation"
   ],
   "host_permissions": [
     "*://*/*"

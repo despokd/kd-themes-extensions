@@ -89,7 +89,7 @@ function deactivateTheme(theme) {
         if (result.activeThemes) {
             // delete all entries of theme
             let activeThemes = result.activeThemes.filter((item) => item !== theme);
-            chrome.storage.sync.set({ activeThemes }, () => { });;
+            chrome.storage.sync.set({ activeThemes }, () => { });
         }
     });
 }
