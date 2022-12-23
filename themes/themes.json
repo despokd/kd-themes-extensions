@@ -5,7 +5,7 @@
             "name": "easyRedmine 11 Dark",
             "files": [
                 "https://pm.webneo.de/assets/easy_themes/easy_theme_design_1-1655278754-theme.css",
-                "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/easyRedmine11/dark.css"
+                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/easyRedmine11/dark.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*",
@@ -18,7 +18,7 @@
             "name": "easyRedmine 11 Contrast",
             "files": [
                 "https://pm.webneo.de/assets/easy_themes/easy_theme_design_3-1631675772-theme.css",
-                "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/easyRedmine11/contrast.css"
+                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/easyRedmine11/contrast.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*",
@@ -31,7 +31,7 @@
             "name": "easyRedmine 11 Compact",
             "files": [
                 "https://pm.webneo.de/assets/easy_themes/easy_theme_design_2-1655278754-theme.css",
-                "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/easyRedmine11/compact.css"
+                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/easyRedmine11/compact.css"
             ],
             "urls": [
                 "https://pm.webneo.de/*",
@@ -43,7 +43,7 @@
             "key": "vacationizrWbn",
             "name": "Vacationizr WBN",
             "files": [
-                "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/vacationizr/wbn.css"
+                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/vacationizr/wbn.css"
             ],
             "urls": [
                 "https://www.vacationizr.com/*"
@@ -54,7 +54,7 @@
             "key": "bitbucketDark",
             "name": "Bitbucket Dark",
             "files": [
-                "https://gitcdn.link/cdn/despokd/kd-themes-extensions/main/themes/bitbucket/dark.css"
+                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/bitbucket/dark.css"
             ],
             "urls": [
                 "https://bitbucket.org/*"
