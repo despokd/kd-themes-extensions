@@ -1,30 +1,177 @@
 :root {
-    --color-bg: #172B4D;
-    --color-text: #fff;
+  color-scheme: dark light;
 
-    --color-header-bg: #6B778C;
-    --color-header-text: var(--color-text);
-    --ds-surface: var(var(--color-header-bg));
-    --ds-text-subtlest: var(var(--color-header-text));
+  --color-green: #b8e994;
+  --color-red: #ff6b6b;
+  --color-yellow: #f1c40f;
+  --color-blue: #7289da;
+  --color-white: #f5f5f5;
+  --color-white-0: #ffffff;
+  --color-white-1: #d9d9d9;
+  --color-black: #19191e;
+  --color-black-0: #000000;
+  --color-grey: #2b2b36;
 
-    --color-a: rgba(108 155 235, 1);
-    --color-a-hover: rgba(108 155 235, .5);
+  --color-text: var(--color-white);
+  --color-background: var(--color-black);
+
+  /* Bitbucket overrides */
+  --ds-surface-overlay: var(--color-background);
 }
 
-
-html {
-    color-scheme: dark light;
+@supports (accent-color: #fff) {
+  :root {
+    accent-color: var(--color-blue, #7289da);
+  }
 }
 
-body {
-    background-color: var(--color-bg, #333);
-    color: var(--color-text, #fff);
+/* Text */
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+li,
+div,
+b,
+input,
+textarea,
+pre,
+label {
+  color: var(--color-text, #f5f5f5) !important;
 }
 
 a {
-    color: var(--color-a, #fff);
+  box-shadow: none !important;
 }
 
 a:hover {
-    color: var(--color-a-hover, #fff);
+  text-decoration: underline !important;
+}
+
+ins {
+  color: var(--color-green, #b8e994) !important;
+}
+
+/* Body */
+body,
+#page,
+[data-testid="ContextualNavigation"] > div {
+  background-color: var(--color-background, #22222d) !important;
+  color: var(--color-text, #f5f5f5) !important;
+}
+
+[class*="sc-"]:not([role="menu"]),
+[data-testid="Navigation"] > div:nth-child(2),
+[data-testid="Navigation"] > div:nth-child(2) * {
+  background-color: transparent !important;
+}
+
+/* Tables */
+tr[class*="css-"]:hover {
+  box-shadow: none !important;
+}
+
+/* Global styling of elements */
+[class*="css-"],
+[class*="css-"] > div,
+[data-testid="NavigationItem"] > div {
+  background-color: var(--color-background, #22222d) !important;
+  color: var(--color-white-1, #d9d9d9) !important;
+}
+
+/** Elements */
+/* Logo */
+[data-testid="product-home-logo"] [role="img"] {
+  background: transparent !important;
+}
+
+/* Icons */
+[style*="--icon-primary-color:currentColor"] {
+  --icon-primary-color: var(--color-text, #f5f5f5) !important;
+}
+
+[class*="HelpBadge"],
+#helpGlobalItem span,
+[class*="sc-"],
+[class*="sc-"] * {
+  border-color: var(--color-blue, #7289da) !important;
+}
+
+[class*="FieldTextStateless"] * {
+  background-color: var(--color-background, #22222d) !important;
+  border-color: var(--color-grey, #2b2b36) !important;
+}
+
+[class*="Item"],
+[class*="Item"] * {
+  background-color: var(--color-grey, #2b2b36) !important;
+  color: var(--color-white-0, #ffffff) !important;
+}
+
+[data-role="droplistContent"] {
+  border: 1px solid var(--color-white-0, #ffffff) !important;
+}
+
+[role="presentation"]:hover,
+[data-testid="NavigationItem"]:hover > div {
+  background-color: var(--color-grey, #2b2b36) !important;
+}
+
+[role="presentation"]:hover * {
+  background-color: transparent !important;
+}
+
+[class*="ItemGroup__GroupTitle"] {
+  color: var(--color-blue, #7289da) !important;
+}
+
+/* Code */
+#content,
+#content *,
+.codehilite pre,
+pre {
+  background-color: var(--color-grey, #2b2b36) !important;
+}
+
+/* Git */
+#changeset-diff,
+#changeset-diff *,
+#changeset-diff *:before,
+#changeset-diff *:after {
+  border-color: var(--color-blue, #7289da) !important;
+}
+
+/* Popup */
+.aui-popup,
+.aui-popup [class*="dialog"] {
+  background-color: var(--color-grey, #2b2b36) !important;
+}
+
+/* Forms */
+.select,
+textarea {
+  border: 1px solid var(--color-blue, #7289da) !important;
+}
+
+textarea {
+  background-color: var(--color-grey, #2b2b36) !important;
+}
+
+.field-group label {
+  color: var(--color-blue, #7289da) !important;
+}
+
+.field-group .field-value * {
+  color: var(--color-blue, #7289da) !important;
+}
+
+/* Search */
+[data-test-id="search-dialog-input"]:not(
+    [data-test-id="search-dialog-input"]:hover
+  ),
+[role="search"] *:not([role="search"]:hover *) {
+  border-color: transparent !important;
 }
