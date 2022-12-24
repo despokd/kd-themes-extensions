@@ -36,10 +36,10 @@
   --color-2: #fff;
   --color-3: var(--color-wbn-grey, #2c3e50);
   --color-4: var(--color-wbn-grey-dark, #161f28);
-  --color-5: #edc008;
+  --color-5: var(--color-wbn-orange, #edc008);
   --color-6: #a5ce42;
   --color-7: #739423;
-  --color-8: #000;
+  --color-8: var(--color-wbn-grey-dark, #000);
   --color-9: #f3f3f3;
   --color-10: #3c556d;
   --color-11: #8cad3b;
@@ -55,11 +55,23 @@
   --color-21: #2c4863;
   --color-22: var(--color-wbn-red, #694583);
   --color-23: #a28ea7;
-  --color-24: tomato;
+  --color-24: var(--color-wbn-red, tomato);
   --color-25: #f0f;
   --color-26: #ff0;
   --color-27: #0ff;
   --color-28: #efefef;
+}
+
+[style*="fill: rgb(161, 199, 68)"] {
+  fill: var(--color-1, #a1c744);
+}
+
+[style*="fill: rgb(237, 192, 8)"] {
+  fill: var(--color-5, #edc008);
+}
+
+[style*="fill: rgb(0, 0, 0)"] {
+  fill: var(--color-8, #000);
 }
 
 ::selection,
@@ -150,6 +162,31 @@ body {
 
 .selectandcopy__input-wrapper:after {
   background-color: var(--color-1, #a1c744);
+  color: var(--color-2, #fff);
+}
+
+.themespicker__switch--default {
+  background-color: var(--color-3, #2c3e50);
+  color: var(--color-2, #fff);
+}
+
+.themespicker__switch--light {
+  background-color: var(--color-16, #f4f5f6);
+  color: var(--color-4, #2c3e50);
+}
+
+.themespicker__switch--purple {
+  background-image: url(/img/themes/2/thumb.png);
+  color: var(--color-2, #fff);
+}
+
+.themespicker__switch--spectrum {
+  background: var(
+    --gradient-wbn,
+    linear-gradient(#0ff, transparent),
+    linear-gradient(-45deg, #f0f, transparent),
+    linear-gradient(45deg, #ff0, transparent)
+  );
   color: var(--color-2, #fff);
 }
 
@@ -1413,9 +1450,12 @@ input[type="radio"]:focus ~ .label:before {
 
 [data-admintheme="3"] .modal,
 [data-usertheme="3"] .modal {
-  background: linear-gradient(var(--color-27, #0ff), transparent),
+  background: var(
+    --gradient-wbn,
+    linear-gradient(var(--color-27, #0ff), transparent),
     linear-gradient(-45deg, var(--color-25, #f0f), transparent),
-    linear-gradient(45deg, var(--color-26, #ff0), transparent);
+    linear-gradient(45deg, var(--color-26, #ff0), transparent)
+  );
 }
 
 [data-admintheme="3"] .modal__box,
