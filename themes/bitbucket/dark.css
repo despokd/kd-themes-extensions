@@ -10,6 +10,8 @@
   --color-white-1: #d9d9d9;
   --color-black: #19191e;
   --color-black-0: #000000;
+  --color-black-1: #30303e;
+  --color-black-2: #1d1d24;
   --color-grey: #2b2b36;
 
   --color-text: var(--color-white);
@@ -26,21 +28,10 @@
 }
 
 /* Text */
-h1,
-h2,
-h3,
-h4,
-h5,
-p,
-a,
-li,
-div,
-b,
-input,
-textarea,
-pre,
-label {
+*:not(.react-monaco-editor-container *, span) {
   color: var(--color-text, #f5f5f5) !important;
+  border-color: var(--color-black-1, #30303e) !important;
+  background-color: var(--color-background, #22222d) !important;
 }
 
 a {
@@ -76,7 +67,7 @@ tr[class*="css-"]:hover {
 
 /* Global styling of elements */
 [class*="css-"],
-[class*="css-"] > div,
+[class*="css-"] > div:not(.react-monaco-editor-container *),
 [data-testid="NavigationItem"] > div {
   background-color: var(--color-background, #22222d) !important;
   color: var(--color-white-1, #d9d9d9) !important;
@@ -84,8 +75,8 @@ tr[class*="css-"]:hover {
 
 /** Elements */
 /* Logo */
-[data-testid="product-home-logo"] [role="img"] {
-  background: transparent !important;
+[data-testid="product-home-logo"] * {
+  background-color: transparent !important;
 }
 
 /* Icons */
@@ -115,12 +106,12 @@ tr[class*="css-"]:hover {
   border: 1px solid var(--color-white-0, #ffffff) !important;
 }
 
-[role="presentation"]:hover,
+[role="presentation"]:hover:not(.monaco-editor *),
 [data-testid="NavigationItem"]:hover > div {
   background-color: var(--color-grey, #2b2b36) !important;
 }
 
-[role="presentation"]:hover * {
+[role="presentation"]:hover *:not(.monaco-editor *) {
   background-color: transparent !important;
 }
 
@@ -128,12 +119,24 @@ tr[class*="css-"]:hover {
   color: var(--color-blue, #7289da) !important;
 }
 
-/* Code */
+#bitbucket-navigation * {
+  box-shadow: none;
+}
+
+/* Page */
+#content {
+  border-radius: 6px;
+}
+
 #content,
 #content *,
 .codehilite pre,
 pre {
-  background-color: var(--color-grey, #2b2b36) !important;
+  background-color: var(--color-black-2, #1d1d24) !important;
+}
+
+.react-monaco-editor-container {
+  filter: invert(0.9) hue-rotate(180deg) !important;
 }
 
 /* Git */
@@ -168,10 +171,11 @@ textarea {
   color: var(--color-blue, #7289da) !important;
 }
 
-/* Search */
-[data-test-id="search-dialog-input"]:not(
-    [data-test-id="search-dialog-input"]:hover
-  ),
-[role="search"] *:not([role="search"]:hover *) {
-  border-color: transparent !important;
+#content [aria-pressed="true"],
+#content [aria-pressed="true"] * {
+  background-color: var(--color-blue, #7289da) !important;
+}
+
+.dismissable-ad {
+  display: none;
 }
