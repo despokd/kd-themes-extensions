@@ -1,3 +1,4 @@
+/* WEBneo bottom bar colors */
 body::after {
   content: "";
   width: 100%;
@@ -16,4 +17,10 @@ body::after {
     #80a51b 66.5%
   );
   z-index: 1000;
+}
+
+/* Links in mail previews */
+.file-content.message-preview a:link,
+.file-content.message-preview span.MsoHyperlink {
+  color: #0080FF;
 }
