@@ -63,6 +63,17 @@
                 "https://bitbucket.org/*"
             ],
             "css": ""
+        },
+        {
+            "key": "adobeXdDark",
+            "name": "Adobe XD Dark",
+            "files": [
+                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/adobeXd/dark.css"
+            ],
+            "urls": [
+                "https://xd.adobe.com/*"
+            ],
+            "css": ""
         }
     ]
 }

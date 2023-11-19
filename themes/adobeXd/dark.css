@@ -1,0 +1,14 @@
+/* make dark */
+body {
+    filter: invert(.95);
+}
+
+/* exlude from invert */
+canvas, 
+img, 
+video, 
+svg, 
+[style*=background-image]:not([style*="background-image: none"]),
+[data-logtype="color"] {
+    filter: invert(1);
+}
