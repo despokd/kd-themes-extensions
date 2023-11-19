@@ -32,3 +32,29 @@ body::after {
 .vue-query__cell-sorts__column-name.vue-query__cell-sorts__column-name {
     color: #f0f4f8; 
 }
+
+/* Vue modal */
+body .vue-modal__container,
+body .vue-modal__legend.reference,
+body .vue-modal__main,
+body .vue-modal__overview,
+body .vue-modal__attributes, 
+body .vue-modal__custom-fields {
+    background-color: #26282d;
+    border-color: transparent;
+}
+body .vue-modal .editable-input__wrapper {
+    color: #cecece;
+}
+body .vue-modal__comment-body {
+    background-color: #26282d;
+    color: #cecece;
+    border-color: #303237;
+}
+body .vue-modal__sidebar,
+body .vue-modal .avatar__wrapper img,
+body .vue-modal__headline,
+body .vue-modal__attribute>.editable-input__wrapper, 
+body .vue-modal__custom-field>.editable-input__wrapper {
+    border-color: #303237;
+}
