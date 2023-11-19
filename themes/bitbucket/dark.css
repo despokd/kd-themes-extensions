@@ -1,181 +1,74 @@
 :root {
-  color-scheme: dark light;
-
-  --color-green: #b8e994;
-  --color-red: #ff6b6b;
-  --color-yellow: #f1c40f;
-  --color-blue: #7289da;
-  --color-white: #f5f5f5;
-  --color-white-0: #ffffff;
-  --color-white-1: #d9d9d9;
-  --color-black: #19191e;
-  --color-black-0: #000000;
-  --color-black-1: #30303e;
-  --color-black-2: #1d1d24;
-  --color-grey: #2b2b36;
-
-  --color-text: var(--color-white);
-  --color-background: var(--color-black);
-
-  /* Bitbucket overrides */
-  --ds-surface-overlay: var(--color-background);
+    --inverted-blue: #e5a442;
+    --inverted-blue-shade: #e59519;
+    --inverted-darkblue: #191919;
+    
+    /* Override bitbucket colors */
+    --ds-link: var(--inverted-blue);
+    --ds-background-brand-bold: var(--inverted-blue);
 }
 
-@supports (accent-color: #fff) {
-  :root {
-    accent-color: var(--color-blue, #7289da);
-  }
+/* Base color, shown when filter() stops working */
+html {
+    background: #191919;
 }
 
-/* Text */
-*:not(.react-monaco-editor-container *, span) {
-  color: var(--color-text, #f5f5f5) !important;
-  border-color: var(--color-black-1, #30303e) !important;
-  background-color: var(--color-background, #22222d) !important;
+body {
+    filter: invert(.9);
+    accent-color: var(--inverted-blue);
 }
 
-a {
-  box-shadow: none !important;
+/* Media */
+img, 
+svg, 
+video, 
+[style*=background-image],
+[data-testid="product-home-logo"] {
+    filter: invert(1);
 }
 
-a:hover {
-  text-decoration: underline !important;
+/* Content container */
+[data-testid="Content"] {
+    background-color: white;
 }
 
-ins {
-  color: var(--color-green, #b8e994) !important;
+/* Pipelines */
+.css-tshdkx {
+    background-color: var(--inverted-darkblue);
+    filter: invert(1);
 }
 
-/* Body */
-body,
-#page,
-[data-testid="ContextualNavigation"] > div {
-  background-color: var(--color-background, #22222d) !important;
-  color: var(--color-text, #f5f5f5) !important;
+/* pipeline/deployment result header */
+[data-test="environment-history-launcher"],
+[data-test="result-page"] > div > header > div:last-child {
+    filter: invert(1);
 }
 
-[class*="sc-"]:not([role="menu"]),
-[data-testid="Navigation"] > div:nth-child(2),
-[data-testid="Navigation"] > div:nth-child(2) * {
-  background-color: transparent !important;
+/* Blue styles */
+#createGlobalItem,
+body.adg3 .aui-button.aui-button-primary {
+    background-color: var(--inverted-blue);
+}
+[style*=--button-selected-border-color] {
+    --button-selected-border-color: var(--inverted-blue) !important;
+}
+[style*=--button-selected-color] {
+    --button-selected-color: var(--inverted-blue) !important;
+}
+.repo-create--expand-trigger {
+    color: var(--inverted-blue) !important;
+}
+a,
+body.adg3 form.aui .buttons-container .cancel {
+    color: var(--inverted-blue);
 }
 
-/* Tables */
-tr[class*="css-"]:hover {
-  box-shadow: none !important;
+/* Blue shade styles*/
+#createGlobalItem:hover,
+body.adg3 .aui-button.aui-button-primary:hover {
+    background-color: var(--inverted-blue-shade);
 }
-
-/* Global styling of elements */
-[class*="css-"],
-[class*="css-"] > div:not(.react-monaco-editor-container *),
-[data-testid="NavigationItem"] > div {
-  background-color: var(--color-background, #22222d) !important;
-  color: var(--color-white-1, #d9d9d9) !important;
-}
-
-/** Elements */
-/* Logo */
-[data-testid="product-home-logo"] * {
-  background-color: transparent !important;
-}
-
-/* Icons */
-[style*="--icon-primary-color:currentColor"] {
-  --icon-primary-color: var(--color-text, #f5f5f5) !important;
-}
-
-[class*="HelpBadge"],
-#helpGlobalItem span,
-[class*="sc-"],
-[class*="sc-"] * {
-  border-color: var(--color-blue, #7289da) !important;
-}
-
-[class*="FieldTextStateless"] * {
-  background-color: var(--color-background, #22222d) !important;
-  border-color: var(--color-grey, #2b2b36) !important;
-}
-
-[class*="Item"],
-[class*="Item"] * {
-  background-color: var(--color-grey, #2b2b36) !important;
-  color: var(--color-white-0, #ffffff) !important;
-}
-
-[data-role="droplistContent"] {
-  border: 1px solid var(--color-white-0, #ffffff) !important;
-}
-
-[role="presentation"]:hover:not(.monaco-editor *),
-[data-testid="NavigationItem"]:hover > div {
-  background-color: var(--color-grey, #2b2b36) !important;
-}
-
-[role="presentation"]:hover *:not(.monaco-editor *) {
-  background-color: transparent !important;
-}
-
-[class*="ItemGroup__GroupTitle"] {
-  color: var(--color-blue, #7289da) !important;
-}
-
-#bitbucket-navigation * {
-  box-shadow: none;
-}
-
-/* Page */
-#content {
-  border-radius: 6px;
-}
-
-#content,
-#content *,
-.codehilite pre,
-pre {
-  background-color: var(--color-black-2, #1d1d24) !important;
-}
-
-.react-monaco-editor-container {
-  filter: invert(0.9) hue-rotate(180deg) !important;
-}
-
-/* Git */
-#changeset-diff,
-#changeset-diff *,
-#changeset-diff *:before,
-#changeset-diff *:after {
-  border-color: var(--color-blue, #7289da) !important;
-}
-
-/* Popup */
-.aui-popup,
-.aui-popup [class*="dialog"] {
-  background-color: var(--color-grey, #2b2b36) !important;
-}
-
-/* Forms */
-.select,
-textarea {
-  border: 1px solid var(--color-blue, #7289da) !important;
-}
-
-textarea {
-  background-color: var(--color-grey, #2b2b36) !important;
-}
-
-.field-group label {
-  color: var(--color-blue, #7289da) !important;
-}
-
-.field-group .field-value * {
-  color: var(--color-blue, #7289da) !important;
-}
-
-#content [aria-pressed="true"],
-#content [aria-pressed="true"] * {
-  background-color: var(--color-blue, #7289da) !important;
-}
-
-.dismissable-ad {
-  display: none;
+a:hover,
+body.adg3 form.aui .buttons-container .cancel:hover {
+    color: var(--inverted-blue-shade);
 }
