@@ -24,3 +24,11 @@ body::after {
 .file-content.message-preview span.MsoHyperlink {
   color: #0080FF;
 }
+
+/* Vue table headers */
+.ant-table.ant-table.ant-table-small .ant-table-header .ant-table-thead>tr>th {
+    background-color: #24262b !important;
+}
+.vue-query__cell-sorts__column-name.vue-query__cell-sorts__column-name {
+    color: #f0f4f8; 
+}
