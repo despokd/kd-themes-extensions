@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "KD Themes",
   "description": "CSS themes and improvements by Kilian Domaratius for specific websites",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "Kilian Domaratius",
   "icons": {
     "16": "./img/icon16.png",
