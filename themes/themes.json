@@ -43,17 +43,6 @@
             "css": ""
         },
         {
-            "key": "vacationizrWbn",
-            "name": "Vacationizr WBN",
-            "files": [
-                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/vacationizr/wbn.css"
-            ],
-            "urls": [
-                "https://www.vacationizr.com/*"
-            ],
-            "css": ""
-        },
-        {
             "key": "bitbucketDark",
             "name": "Bitbucket Dark",
             "files": [
