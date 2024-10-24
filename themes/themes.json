@@ -43,17 +43,6 @@
             "css": ""
         },
         {
-            "key": "bitbucketDark",
-            "name": "Bitbucket Dark",
-            "files": [
-                "https://github-cdn.vercel.app/despokd/kd-themes-extensions/main/themes/bitbucket/dark.css"
-            ],
-            "urls": [
-                "https://bitbucket.org/*"
-            ],
-            "css": ""
-        },
-        {
             "key": "adobeXdDark",
             "name": "Adobe XD Dark",
             "files": [
