@@ -1,3 +1,5 @@
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+
 init();
 
 chrome.runtime.onStartup.addListener(() => {
@@ -20,40 +22,74 @@ function init() {
   getThemes().then(([response]) => {
     // get css out of urls
     console.debug('response', response);
+    const fetchPromises = [];
     response.themes.forEach((theme) => {
+      theme.css = '';
       theme.files.forEach((file) => {
-        fetch(file)
-          .then((response) => response.text())
+        const promise = getCachedOrFetch(file)
           .then((css) => {
-            theme.css = css;
+            theme.css += css;
           })
           .catch((error) => {
             console.error('Can`t get theme styles', error);
           });
+        fetchPromises.push(promise);
       });
     });
 
-    // save themes to storage
-    chrome.storage.sync.set({ themes: response.themes });
+    // save themes to local storage after all CSS is fetched
+    Promise.all(fetchPromises).then(() => {
+      chrome.storage.local.set({ themes: response.themes });
+    });
   });
 
   injectStyles();
 }
 
+/**
+ * Fetch a URL or return from local cache if still valid (within CACHE_DURATION)
+ */
+function getCachedOrFetch(url) {
+  return new Promise((resolve, reject) => {
+    const cacheKey = 'cssCache_' + url;
+    chrome.storage.local.get([cacheKey], (result) => {
+      const cached = result[cacheKey];
+      if (cached && cached.cachedAt && (Date.now() - cached.cachedAt) < CACHE_DURATION) {
+        resolve(cached.css);
+      } else {
+        fetch(url)
+          .then((response) => response.text())
+          .then((css) => {
+            chrome.storage.local.set({ [cacheKey]: { css, cachedAt: Date.now() } });
+            resolve(css);
+          })
+          .catch(reject);
+      }
+    });
+  });
+}
 
 /**
- * Fetch themes from external source
+ * Fetch themes from external source or return from local cache if still valid
  */
-async function getThemes() {
+function getThemes() {
   console.log('getThemes');
-  // fetch themes JSON file from hosted repo:
-  const [themes] = await Promise.all([
-    fetch('https://raw.githubusercontent.com/despokd/kd-themes-extensions/main/themes/themes.json')
-  ]);
-
-  const themesJson = await themes.json();
-
-  return [themesJson];
+  return new Promise((resolve) => {
+    chrome.storage.local.get(['themesJson', 'themesJsonCachedAt'], (result) => {
+      if (result.themesJson && result.themesJsonCachedAt &&
+          (Date.now() - result.themesJsonCachedAt) < CACHE_DURATION) {
+        resolve([result.themesJson]);
+      } else {
+        // fetch themes JSON file from hosted repo:
+        fetch('https://raw.githubusercontent.com/despokd/kd-themes-extensions/main/themes/themes.json')
+          .then((response) => response.json())
+          .then((json) => {
+            chrome.storage.local.set({ themesJson: json, themesJsonCachedAt: Date.now() });
+            resolve([json]);
+          });
+      }
+    });
+  });
 }
 
 /**
@@ -80,7 +116,7 @@ function injectStyles() {
   chrome.storage.sync.get(["activeThemes"], (resultAT) => {
     if (!resultAT.activeThemes) return;
 
-    chrome.storage.sync.get(["themes"], (resultT) => {
+    chrome.storage.local.get(["themes"], (resultT) => {
       if (!resultT.themes) return;
 
       resultAT.activeThemes.forEach((activeTheme) => {
