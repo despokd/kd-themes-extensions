@@ -1,3 +1,5 @@
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 1 day in milliseconds
+
 checkThemes();
 
 /**
@@ -30,11 +32,34 @@ function checkThemes() {
 }
 
 /**
+ * Fetch a URL or return from local cache if still valid (within CACHE_DURATION)
+ */
+function getCachedOrFetch(url) {
+    return new Promise((resolve, reject) => {
+        const cacheKey = 'cssCache_' + url;
+        chrome.storage.local.get([cacheKey], (result) => {
+            const cached = result[cacheKey];
+            if (cached && cached.cachedAt && (Date.now() - cached.cachedAt) < CACHE_DURATION) {
+                resolve(cached.css);
+            } else {
+                fetch(url)
+                    .then((res) => res.text())
+                    .then((css) => {
+                        chrome.storage.local.set({ [cacheKey]: { css, cachedAt: Date.now() } });
+                        resolve(css);
+                    })
+                    .catch(reject);
+            }
+        });
+    });
+}
+
+/**
  * Inject stylesheet
  */
 function activateTheme(theme) {
     // search theme in storage
-    chrome.storage.sync.get(["themes"], (result) => {
+    chrome.storage.local.get(["themes"], (result) => {
         if (result.themes) {
             result.themes.forEach((availableTheme) => {
                 if (availableTheme.key === theme) {
@@ -45,16 +70,19 @@ function activateTheme(theme) {
                             // add stylesheets
                             let style = document.createElement('style');
                             style.id = `KD${theme}`;
-                            availableTheme.files.forEach((file) => {
-                                // get content of file
-                                fetch(file)
-                                    .then(res => res.text())
-                                    .then(out => {
-                                        // add css
-                                        style.innerHTML += out;
+                            const cssPromises = availableTheme.files.map((file) => {
+                                // get content of file from cache or network
+                                return getCachedOrFetch(file)
+                                    .catch(error => {
+                                        console.error('Can`t get theme styles', error);
+                                        return '';
                                     });
                             });
-                            document.body.appendChild(style);
+                            // append style only after all CSS files are fetched
+                            Promise.all(cssPromises).then((cssParts) => {
+                                style.innerHTML = cssParts.join('');
+                                document.body.appendChild(style);
+                            });
                         }
                     });
 
